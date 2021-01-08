@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Сигнальная лампа для валидного input | Signal lamp for valid input</title>
+ <link rel="stylesheet" href="./style.min.css">
+</head>
+<body>
+ 
+ <main>
+
+  <section>
+   <h2 class="validate-signal-lamp__title">Валидация вводимого email</h2>
+   <form action="" id="form" class="validate-signal-lamp__form">
+    <div class="validate-signal-lamp__input-box">
+     <input onkeyup="validateEmail();" type="text" id="email" class="validate-signal-lamp__input-email" placeholder="Введите email адрес">
+     <i class="validate-signal-lamp__input-email-indicator"></i>
+    </div>
+   </form>
+  </section>
+
+ </main>
+
+ <script>
+  function validateEmail() {
+   var inputEmailIndicator = document.querySelector('.validate-signal-lamp__input-email-indicator');
+   var email = document.querySelector('#email').value;
+   var emailPattern = /^[^ ]+@[^ ]+\.[a-z](.+)$/;
+
+   if (email.match(emailPattern)) {
+    inputEmailIndicator.classList.remove('_invalid');
+    inputEmailIndicator.classList.add('_valid');
+   } else {
+    inputEmailIndicator.classList.remove('_valid');
+    inputEmailIndicator.classList.add('_invalid');
+   } 
+   if (email === '') {
+    inputEmailIndicator.classList.remove('_invalid');
+    inputEmailIndicator.classList.remove('_valid');
+   }
+  }
+ </script>
+</body>
+</html>
